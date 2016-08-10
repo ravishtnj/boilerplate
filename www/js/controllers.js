@@ -43,11 +43,52 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('SMAttestation',function($scope){
+.controller('SMAttestation',function($scope, datafactory, $http){
+    $scope.attestLabels = ["Welcome","User","Done Attestation"];
+    var postparameter = {
+            /* POST PARAMTER DATA CAN BE SEND HERE */
+            "uid": "USER ID GOES HERE",
+            "jsondatas": escape('{"sampledata":{"sampleparam":""},"data2":{"param1":"data1","param2":"data2"}}')
+    };
 
-$scope.attestLabels = ["Welcome","User","Done Attestation"];
+    // Uncomment  the  below to get from factory 
+
+    /* var sendURL = datafactory.getSeniorAttesation(postparameter);
+            $http({
+              method: getMethod,
+              url: sendUrl
+            }).then(function successCallback(response) {
+              var formatData = JSON.parse(response);
+              $scope.sampleData = formatData;
+                // this callback will be called asynchronously
+                // when the response is available
+              }, function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+              });
+  */
 
 
+    /*BoilerTemplate retrieves data from Local JSON  comment the below to stop */ 
+        
+    $http({method: 'GET', url: 'data/sampleData.js'}).success(function(formatdata)
+    {
+           $scope.sampleData = formatdata.data;
+    });
+    console.log($scope.sampleData);
+
+
+    $scope.goToSubmitForm = function(){
+      console.log("Button Click");
+    }
+
+    $scope.showDetails = function(){
+      console.log("Can perform ionic popup or page navigation");
+    }
+
+    $scope.triggerButtonClick = function(){
+      console.log("Perform Submit action - Service call connect");
+    }
 })
 
 

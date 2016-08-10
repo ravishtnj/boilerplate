@@ -1,6 +1,53 @@
 <ion-view view-title="SM Attestation">
-  <ion-content>
-    <h1>SM Attestation</h1>
-		<h1>{{attestLabels[1]}}</h1>
-  </ion-content>
+  	<ion-nav-buttons side="secondary">
+        <button class="signoff button button-balanced" ng-click="goToSubmitForm()" align="left">Button</button>
+  	</ion-nav-buttons>
+  	<ion-content>
+    	<ion-list can-swipe="true" >
+  	 		<ion-item ng-repeat="list in sampleData.records" class="item-data-list">
+	  	 		<div class="row row-phone">
+	  	 			<div class="col secondary-label">Category</div>
+	  	 			<div class="col secondary-content" align="right">{{list.listdate}}</div>
+	  	 		</div>
+	  	 		<div class="row row-phone">
+	  	 			<div class="col secondary-content">{{list.category}}</div>
+	  	 		</div>
+	  	 		<div class="row row-phone">
+	  	 			<div class="col secondary-label">Name</div>
+	  	 			<div class="col secondary-label"  align="right" >Profile Detail</div>
+	  	 		</div>
+	  	 		<div class="row row-phone">
+	  	 			<div class="col secondary-content with-wrapper padding-top">{{list.listname}}</div>
+	  	 			<div class="col profile-exceptions bulksignoff" align="right">
+						<span style="width:40px">5</span>
+						<span style="width:40px">10</span>
+						<span style="width:40px">15</span>
+					</div>
+	  	 		</div>
+	  	 		<div class="row row-phone">
+	  	 			<div class="col secondary-content"><span class="secondary-label">Description:</span> {{list.description}}</div>
+	  	 		</div>
+	  	 		<ion-option-button class="button-calm" ng-click="showDetails()">Swipe Button</ion-option-button>
+			</ion-item>
+			<div class="list">
+			  <ion-item class="item-divider item-static item item-icon-left">
+			  	<i class="icon icon-logo ion-help-circled"></i>
+			  	Form Control
+			  </ion-item>
+			  <label class="item item-input item-stacked-label padding-right label-wrapper">
+			    <span class="input-label">Input Text area</span>
+			    <textarea class="text-area-inputs"></textarea>
+			  </label>
+			  <label class="item item-input item-stacked-label padding-right label-wrapper">
+			    <span class="input-label">Input Text area</span>
+			    <textarea class="text-area-inputs" ></textarea>
+			  </label>
+			</div>
+			<div class="padding" align="right" >
+				<button class="button button-enabled button-positive" ng-click="triggerButtonClick()">
+				  Submit
+				</button>
+			</div>
+		</ion-list>
+  	</ion-content>
 </ion-view>
